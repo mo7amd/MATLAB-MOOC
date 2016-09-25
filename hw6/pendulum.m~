@@ -1,0 +1,34 @@
+function [T] = pendulum(L,a0)
+%    a0 postive integer less than pi 
+    dt = 1.e6;
+    a_velocity = 0;
+    T = 0;
+    g = 9.8;
+    theta = abs(a0);
+   
+    while theta > 0
+        av = g*sin(theta)/L;
+        a_velocity = a_velocity + dt * av;
+        theta = theta - dt * a_velocity;
+        T = T + dt;
+    end
+    T = T*4;
+end
+
+% function T = pendulum(L,angle0)
+%     T = 0;
+%     if L > 0
+%         dt = 1e-6;
+%         g = 9.8;
+%         angle = abs(angle0);
+%         omega = 0;
+%         T = 0;
+%         while angle > 0
+%            a = g*sin(angle)/L;
+%            omega = omega + dt * a;
+%            angle = angle - dt * omega;
+%            T = T + dt;
+%         end
+%         T = T * 4;
+%     end
+% end
